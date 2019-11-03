@@ -1,0 +1,13 @@
+{
+  "folders": [
+	{
+		"path": "D:\\Users\\Pr0sper0\\workspace\\java\\Test1\\BTSystem\\btsystem"
+	},
+	{
+		"path": "D:\\Users\\Pr0sper0\\workspace\\java\\Test1\\BTSystem\\btsystem-client"
+	}
+],
+  "settings": {
+    "java.configuration.updateBuildConfiguration": "interactive"
+  }
+}
