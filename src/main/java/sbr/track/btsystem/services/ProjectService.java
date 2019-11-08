@@ -1,6 +1,7 @@
 package sbr.track.btsystem.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import sbr.track.btsystem.domain.Backlog;
@@ -18,6 +19,7 @@ public class ProjectService {
     @Autowired
     private BacklogRepository backlogRepository;
 
+    @Async("MyConcurrentTaskExecutor")
     public Project saveOrUpdateProject(Project project) {
         try {
             project.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
