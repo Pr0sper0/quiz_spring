@@ -31,7 +31,7 @@ public class Project {
     @Column(updatable = false, unique = true)
     private String projectIdentifier;
     @NotBlank(message = "Project description is required")
-    @Column(length = 4000)
+    @Column(columnDefinition = "TEXT", length = 4000)
     private String description;
 
     @Override
