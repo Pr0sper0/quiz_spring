@@ -11,7 +11,6 @@ export const createProject = (project, history) => async dispatch => {
       payload: {}
     });
   } catch (err) {
-    console.log(err.response);
     dispatch({
       type: GET_ERRORS,
       payload: err.response.data

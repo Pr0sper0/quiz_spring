@@ -63,7 +63,7 @@ class UpdateProject extends Component {
     };
 
     this.props.createProject(updateProject, this.props.history);
-    console.log(updateProject);
+
   }
 
   render() {

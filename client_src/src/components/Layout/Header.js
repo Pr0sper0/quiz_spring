@@ -45,7 +45,7 @@ class Header extends Component {
 
     let headerLinks;
 
-    if (true) {
+    if (false) {
       headerLinks = userIsAuthenticated;
     } else {
       headerLinks = userIsNotAuthenticated;
