@@ -11,39 +11,40 @@ export const createNewUser = (newUser, history) => async dispatch => {
             type: GET_ERRORS,
             payload: {}
         });
-    } catch(error) {
+    } catch (error) {
         dispatch({
             type: GET_ERRORS,
             payload: error.response.data
         });
     }
-}  
+}
 
 export const login = loginRequest => async dispatch => {
-    
+
     try {
         // post => Login Request
         const res = await axios.post("/api/users/login", loginRequest);
         // extract token from res.data
-        const {token} = res.data;
+        const { token } = res.data;
         // store the token in the LocalStorage
         localStorage.setItem("jwtToken", token);
         // set our token in header ***
         setJWTToken(token);
         // decode token on React
-        const decode =jwt_decode(token);
+        const decode = jwt_decode(token);
         // dispatch to our securityReducer
-        dispatch ({
+        console.log(decode);
+        dispatch({
             type: SET_CURRENT_USER,
             payload: decode
         })
-    } catch(error) {
+    } catch (error) {
         dispatch({
             type: GET_ERRORS,
             payload: error.response.data
         })
     }
-    
-    
+
+
 
 }
