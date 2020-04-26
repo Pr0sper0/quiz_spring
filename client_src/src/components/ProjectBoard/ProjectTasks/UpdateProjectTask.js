@@ -1,9 +1,9 @@
-import React, {Component} from "react";
-import {connect} from "react-redux";
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import classnames from "classnames";
-import {getProjectTask, updateProjectTask} from "../../../actions/backlogActions";
+import { getProjectTask, updateProjectTask } from "../../../actions/backlogActions";
 import PropTypes from "prop-types";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class UpdateProjectTask extends Component {
 
@@ -25,10 +25,10 @@ class UpdateProjectTask extends Component {
         this.onSubmit = this.onSubmit.bind(this);
     }
 
-    componentWillReceiveProps(nextProps, nextContext) {
+    componentWillReceiveProps(nextProps) {
 
         if (nextProps.errors) {
-            this.setState({errors: nextProps.errors});
+            this.setState({ errors: nextProps.errors });
         }
 
         const {
@@ -57,13 +57,13 @@ class UpdateProjectTask extends Component {
     }
 
     componentDidMount() {
-        const {backlog_id, pt_id} = this.props.match.params;
+        const { backlog_id, pt_id } = this.props.match.params;
         console.log(this.props);
         this.props.getProjectTask(backlog_id, pt_id, this.props.history);
     }
 
     onChange(e) {
-        this.setState({[e.target.name]: e.target.value})
+        this.setState({ [e.target.name]: e.target.value })
     }
 
     onSubmit(e) {
@@ -87,7 +87,7 @@ class UpdateProjectTask extends Component {
     }
 
     render() {
-        const {errors} = this.state;
+        const { errors } = this.state;
         console.log(errors);
         return (
             <div className="add-PBI">
@@ -118,13 +118,13 @@ class UpdateProjectTask extends Component {
                                     {/*    )}*/}
                                 </div>
                                 <div className="form-group">
-                                      <textarea
-                                          className="form-control form-control-lg"
-                                          placeholder="Acceptance Criteria"
-                                          name="acceptanceCriteria"
-                                          value={this.state.acceptanceCriteria}
-                                          onChange={this.onChange}
-                                      />
+                                    <textarea
+                                        className="form-control form-control-lg"
+                                        placeholder="Acceptance Criteria"
+                                        name="acceptanceCriteria"
+                                        value={this.state.acceptanceCriteria}
+                                        onChange={this.onChange}
+                                    />
                                 </div>
                                 <h6>Due Date</h6>
                                 <div className="form-group">
@@ -191,5 +191,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    {getProjectTask, updateProjectTask}
+    { getProjectTask, updateProjectTask }
 )(UpdateProjectTask);

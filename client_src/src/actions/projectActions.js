@@ -6,6 +6,7 @@ export const createProject = (project, history) => async dispatch => {
     //const res =
     await axios.post("/api/project", project);
     history.push("/dashboard");
+    console.log("Try to create project");
     dispatch({
       type: GET_ERRORS,
       payload: {}
@@ -19,8 +20,11 @@ export const createProject = (project, history) => async dispatch => {
 };
 
 export const getProjects = () => async dispatch => {
+  console.log("Try to get projects");
+  console.log(localStorage.getItem("jwtToken"))
   const res = await axios("/api/project/all");
   //history.push("/dashboard");
+
   dispatch({
     type: GET_PROJECTS,
     payload: res.data

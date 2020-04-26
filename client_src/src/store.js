@@ -22,7 +22,7 @@ if (window.navigator.userAgent.includes("Chrome") && ReactReduxDevTools) {
   store = createStore(
     rootReducer,
     initialState,
-    compose(applyMiddleware(...middleware))
+    compose(applyMiddleware(...middleware) && ReactReduxDevTools)
   );
 }
 

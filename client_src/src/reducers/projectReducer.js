@@ -5,9 +5,10 @@ const initialState = {
   project: {}
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case GET_PROJECTS:
+      console.log(state);
       return {
         ...state,
         projects: action.payload
