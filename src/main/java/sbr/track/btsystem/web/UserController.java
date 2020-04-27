@@ -19,7 +19,6 @@ import sbr.track.btsystem.security.JwtTokenProvider;
 import sbr.track.btsystem.services.MapValidationErrorService;
 import sbr.track.btsystem.services.UserService;
 import sbr.track.btsystem.validator.UserValidator;
-import sun.plugin.liveconnect.SecurityContextHelper;
 
 import javax.validation.Valid;
 

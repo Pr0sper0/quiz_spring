@@ -30,17 +30,16 @@ import static sbr.track.btsystem.security.SecurityConstants.SIGN_UP_URLS;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    CustomUserDetailsService customUserDetailsService;
-    @Autowired
     private JwtAuthenticationEntryPoint unauthorizedHandler;
+
     @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private CustomUserDetailsService customUserDetailsService;
 
     @Bean
-    public JwtAuthenticationFilter jwtAuthenticationFilter() {
-        return new JwtAuthenticationFilter();
-    }
+    public JwtAuthenticationFilter jwtAuthenticationFilter() {return  new JwtAuthenticationFilter();}
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     protected void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
@@ -49,17 +48,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     @Bean(BeanIds.AUTHENTICATION_MANAGER)
-    public AuthenticationManager authenticationManager() throws Exception {
+    protected AuthenticationManager authenticationManager() throws Exception {
         return super.authenticationManager();
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
-                .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and().sessionManagement()
+                .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
+                .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and().headers().frameOptions().sameOrigin()
-                .and().authorizeRequests()
+                .and()
+                .headers().frameOptions().sameOrigin() //To enable H2 Database
+                .and()
+                .authorizeRequests()
                 .antMatchers(
                         "/",
                         "/favicon.ico",
